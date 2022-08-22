@@ -13,7 +13,11 @@ import router from './router'
 
 import '@/icons' // icon
 import '@/permission' // permission control
-
+import * as directives from '@/directives'
+// 注册自定义指令
+// 遍历所有的导出的指令对象 完成自定义全局注册
+// 注册自定义指令
+Object.keys(directives).forEach(ele => Vue.directive(ele, directives[ele]))
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
