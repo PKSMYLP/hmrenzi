@@ -5,6 +5,7 @@ import store from '@/store'
 import router from '@/router'
 // import { getToken } from '@/utils/auth'
 // 设置token 有效时间
+
 const timeOut = 3600
 
 // 是否超时
@@ -15,8 +16,8 @@ function IsCheckTimeOut() {
   return (currentTime - timeStamp) / 1000 > timeOut
 }
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
-  timeout: 5000 // request timeout
+  baseURL: process.env.VUE_APP_BASE_API // url = base url + request url
+  // timeout: 5000 // request timeout
 })
 
 // request interceptor  请求拦截器
@@ -27,6 +28,7 @@ service.interceptors.request.use(config => {
       // 判断token 是否过期
       store.dispatch('user/logout')
       router.push('/login')
+
       // Message.error('token过期了')
       return Promise.reject(new Error('token过期了'))
     }

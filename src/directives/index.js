@@ -1,3 +1,4 @@
+// 处理图片的自定义指令
 export const imgerror = {
   // 指令对象 会在当前的dom元素插入到节点之后执行
   inserted(dom, options) {
@@ -12,6 +13,7 @@ export const imgerror = {
     }
   }
 }
+// 颜色的自定义指令
 export const color = {
   inserted(dom, options) {
     dom.style.color = options.value
